@@ -8,7 +8,13 @@ app.use(express.json());
 app.use(router);
 
 router.get('/', function(req, res) {
-  res.send('Hola desde router get')
+  // las cabeceras se mandan en la req
+  console.log(req.headers);
+  // tambien podemos enviar headers como respuesta
+  res.header({
+    'custom-header': 'nuestro valor personalizado'
+  })
+  res.send('Hola desde router get');
 });
 
 router.post('/message', function(req, res) {
