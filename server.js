@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const response = require('./network/response');
 var app = express();
 
 // nos permite trabajar con el body de la peticion de forma sencilla
@@ -14,12 +15,13 @@ router.get('/', function(req, res) {
   res.header({
     'custom-header': 'nuestro valor personalizado'
   })
-  res.send('Hola desde router get');
+  // res.send('Hola desde router get');
+  response.success(req,res, 'Lista de mensajes añadidos');
 });
 
 router.post('/message', function(req, res) {
   console.log(req.body)
-  res.send('Mensaje añadido con exito')
+  response.success(req, res, 'Creado correctamente');
 })
 
 
