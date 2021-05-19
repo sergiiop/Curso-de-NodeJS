@@ -23,16 +23,13 @@ router.post('/', function (req, res) {
 })
 
 router.patch('/:id', function(req,res){
-  console.log(req.params.id);
-
-  controller.updateMessage(req.params.id, req.body.text)
+  controller.updateMessage(req.params.id, req.body.message)
     .then((data) => {
-      response.succes(req, res, data, 200);
+      response.success(req, res, data, 200);
     })
     .catch(e => {
       response.error(req,res,'Error Interno',500,e)
-    })
-  res.send('Ok');
+    });
 })
 
 module.exports = router;
